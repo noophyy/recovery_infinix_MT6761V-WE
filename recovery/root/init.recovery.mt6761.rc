@@ -12,29 +12,16 @@ on fs
     install_keyring
     setprop crypto.ready 1
 
-service keystore_auth /system/bin/keystore_auth
-    oneshot
-    user system
-    group root
-    disabled
-    seclabel u:r:recovery:s0
 
-service keystore /system/bin/keystore /tmp/misc/keystore
-    user root
-    group root drmrpc readproc
-    disabled
-    seclabel u:r:recovery:s0
 
 service gatekeeper-1-0 /vendor/bin/hw/android.hardware.gatekeeper@1.0-service
     user root
     group root
-    disabled
     seclabel u:r:recovery:s0
 
 service keymaster-3-0 /vendor/bin/hw/android.hardware.keymaster@3.0-service
     user root
     group root drmrpc
-    disabled
     seclabel u:r:recovery:s0
 
 service keymaster_attestation-1-1 /vendor/bin/hw/vendor.mediatek.hardware.keymaster_attestation@1.1-service
@@ -42,7 +29,6 @@ service keymaster_attestation-1-1 /vendor/bin/hw/vendor.mediatek.hardware.keymas
     interface vendor.mediatek.hardware.keymaster_attestation@1.1::IKeymasterDevice default
     user root
     group root
-    disabled
     seclabel u:r:recovery:s0
 
 on property:hwservicemanager.ready=true
@@ -50,6 +36,12 @@ on property:hwservicemanager.ready=true
     start keymaster-3-0
     start gatekeeper-1-0
     start keymaster_attestation-1-1
+
+on property:ro.crypto.state=unencrypted
+    start teei_daemon
+    start keymaster-3-0
+    start keymaster_attestation-1-1
+    start gatekeeper-1-0
 
 on property:ro.crypto.state=unsupported
     stop teei_daemon
@@ -71,3 +63,6 @@ on property:twrp.all.users.decrypted=true
 
 on boot
     start health-hal-2-0
+start teei_daemon
+start keymaster-3-0
+start gatekeeper-1-0
