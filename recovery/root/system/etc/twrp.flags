@@ -32,7 +32,7 @@
 /product_image	    emmc	/dev/block/mapper/product   flags=backup=1;display="Product Image";flashimg
 /system_image	    auto	/dev/block/dm-1    flags=backup=1;display="System ext4";wipeingui
 /vendor_image	    auto	/dev/block/dm-2    flags=backup=1;display="Vendor ext4";wipeingui
-/product_image	    auti	/dev/block/dm-0   flags=backup=1;display="Product ext4";wipeingui
+/product_image	    auto	/dev/block/dm-0   flags=backup=1;display="Product ext4";wipeingui
 
 # AVB
 /vbmeta				emmc	  /dev/block/platform/bootdevice/by-name/vbmeta			              flags=display="VBMeta";backup=1;flashimg=1
