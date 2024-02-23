@@ -110,7 +110,6 @@ TW_RECOVERY_ADDITIONAL_RELINK_FILES += \
     $(TARGET_OUT_VENDOR_EXECUTABLES)/hw/vendor.mediatek.hardware.keymaster_attestation@1.1-service \
 $(TARGET_OUT_VENDOR_EXECUTABLES)/teei_daemon \
     $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/libkeymaster3device.so \
-$(TARGET_OUT_SHARED_LIBRARIES)/vndk-29/libpuresoftkeymasterdevice.so \
     $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/hw/vendor.mediatek.hardware.keymaster_attestation@1.1-impl.so \
     $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/vendor.mediatek.hardware.keymaster_attestation@1.0.so \
 $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/hw/android.hardware.keymaster@3.0-impl.so
